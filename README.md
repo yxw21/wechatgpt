@@ -15,7 +15,7 @@ CHAT_GPT_WECHAT_POLICY = ignore
 ```
 CHAT_GPT_WECHAT_POLICY = agree,123456
 ```
-远程验证（GET请求http://example.com/验证信息），响应状态码为201同意添加
+远程验证（GET请求`http://example.com/验证信息`），响应状态码为201同意添加
 ```
 CHAT_GPT_WECHAT_POLICY = agree,https://example.com
 ```
