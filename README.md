@@ -21,6 +21,6 @@ CHAT_GPT_WECHAT_POLICY = agree,https://example.com
 ```
 # 使用(可直接下载二进制文件)
 ```
-./wechatgpt_linux_amd64
+./wechatgpt
 ```
 在浏览器打开url扫码登录即可
