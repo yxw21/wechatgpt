@@ -24,3 +24,7 @@ CHAT_GPT_WECHAT_POLICY = agree,https://example.com
 ./wechatgpt
 ```
 在浏览器打开url扫码登录即可
+# 支持的功能
+1. 私聊
+2. 群里@
+3. 好友请求
