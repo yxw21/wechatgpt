@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/eatmoreapple/openwechat"
+	"github.com/skip2/go-qrcode"
 	"log"
 	"wechatgpt/message"
 )
@@ -22,6 +23,12 @@ func main() {
 	bot.UUIDCallback = func(uuid string) {
 		url := fmt.Sprintf("https://login.weixin.qq.com/qrcode/%s", uuid)
 		fmt.Println(url)
+		qr, err := qrcode.New(fmt.Sprintf("https://login.weixin.qq.com/l/%s", uuid), qrcode.Medium)
+		if err != nil {
+			log.Println(err)
+		} else {
+			fmt.Println(qr.ToSmallString(true))
+		}
 	}
 	reloadStorage := openwechat.NewJsonFileHotReloadStorage("wechat.json")
 	if err := bot.HotLogin(reloadStorage); err != nil {
