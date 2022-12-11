@@ -1,5 +1,12 @@
 # 环境变量
-### CHAT_GPT_SESSION_TOKEN (必须提供)
+
+**必须提供CHAT_GPT_USERNAME、 CHAT_GPT_PASSWORD 或者 CHAT_GPT_SESSION_TOKEN**
+
+### CHAT_GPT_USERNAME (可选)
+openai用户名
+### CHAT_GPT_PASSWORD (可选)
+openai密码
+### CHAT_GPT_SESSION_TOKEN (可选)
 chatgpt会话token, 大约一个月过期，获取步骤如下
 1. 登录 https://chat.openai.com
 2. 获取`cookie` `__Secure-next-auth.session-token`
@@ -32,4 +39,4 @@ CHAT_GPT_WECHAT_POLICY = agree,https://example.com
 ```
 ./wechatgpt
 ```
-扫描终端二维码登录即可
+扫描终端二维码登录微信即可
