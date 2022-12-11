@@ -6,9 +6,9 @@ import (
 )
 
 type Config struct {
-	SessionToken    string
 	Username        string
 	Password        string
+	SessionToken    string
 	FriendAddPolicy string
 }
 
@@ -18,9 +18,9 @@ var Chats = make(map[string]*chatgpt.Chat)
 
 func init() {
 	Instance = &Config{
-		SessionToken:    os.Getenv("CHAT_GPT_SESSION_TOKEN"),
-		Username:        os.Getenv("CHAT_GPT_USERNAME"),
-		Password:        os.Getenv("CHAT_GPT_PASSWORD"),
-		FriendAddPolicy: os.Getenv("CHAT_GPT_WECHAT_POLICY"),
+		Username:        os.Getenv("WECHAT_CHAT_GPT_USERNAME"),
+		Password:        os.Getenv("WECHAT_CHAT_GPT_PASSWORD"),
+		SessionToken:    os.Getenv("WECHAT_CHAT_GPT_TOKEN"),
+		FriendAddPolicy: os.Getenv("WECHAT_CHAT_GPT_POLICY"),
 	}
 }
