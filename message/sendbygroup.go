@@ -2,7 +2,6 @@ package message
 
 import (
 	"github.com/eatmoreapple/openwechat"
-	"github.com/yxw21/chatgpt"
 	"strings"
 	"wechatgpt/config"
 	"wechatgpt/helpers"
@@ -25,7 +24,7 @@ func SendByGroup(msg *openwechat.Message) {
 	}
 	senderID := sender.ID()
 	if _, ok := config.Chats[senderID]; !ok {
-		config.Chats[senderID] = chatgpt.NewChat(config.Instance.SessionToken)
+		config.Chats[senderID] = helpers.GetNewChat()
 	}
 	word = strings.Replace(msg.Content, "@"+sender.Self.NickName, "", -1)
 	res, err := config.Chats[senderID].Send(word)

@@ -2,8 +2,8 @@ package message
 
 import (
 	"github.com/eatmoreapple/openwechat"
-	"github.com/yxw21/chatgpt"
 	"wechatgpt/config"
+	"wechatgpt/helpers"
 )
 
 func Other(msg *openwechat.Message) {
@@ -15,7 +15,7 @@ func Other(msg *openwechat.Message) {
 	senderID := sender.ID()
 	if msg.IsText() {
 		if _, ok := config.Chats[senderID]; !ok {
-			config.Chats[senderID] = chatgpt.NewChat(config.Instance.SessionToken)
+			config.Chats[senderID] = helpers.GetNewChat()
 		}
 		res, err := config.Chats[senderID].Send(msg.Content)
 		if err != nil {
