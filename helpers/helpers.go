@@ -28,8 +28,8 @@ func GetVerifyMsg(content string) string {
 }
 
 func GetNewChat() *chatgpt.Chat {
-	if config.Instance.Username != "" && config.Instance.Password != "" {
-		return chatgpt.NewChat(config.Instance.Username, config.Instance.Password)
+	if config.Instance.Username != "" && config.Instance.Password != "" && config.Instance.Key != "" {
+		return chatgpt.NewChat(config.Instance.Username, config.Instance.Password, config.Instance.Key)
 	}
 	return chatgpt.NewChatWithSessionToken(config.Instance.SessionToken)
 }

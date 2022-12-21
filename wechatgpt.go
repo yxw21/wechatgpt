@@ -36,5 +36,5 @@ func main() {
 			log.Fatal(err)
 		}
 	}
-	bot.Block()
+	_ = bot.Block()
 }
