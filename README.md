@@ -1,9 +1,48 @@
+
+# 依赖
+- linux需要安装`xvfb`
+
+Ubuntu or Debian
+```
+apt update
+apt install xvfb
+```
+CentOS
+```
+yum update
+yum install xorg-x11-server-Xvfb
+```
+- 登录需要谷歌验证码，引入了第三方破解，需要去网站`nopecha.com`购买key，价格很便宜
+
+```
+https://nopecha.com
+```
+- 浏览器
+
+Ubuntu or Debian
+```
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt install ./google-chrome-stable_current_amd64.deb
+```
+CentOS
+```
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+yum localinstall -y google-chrome-stable_current_x86_64.rpm
+```
+Alpine
+```
+apk add chromium
+```
+
+
 # 环境变量
 
 ### WECHAT_CHAT_GPT_USERNAME (可选)
 openai用户名
 ### WECHAT_CHAT_GPT_PASSWORD (可选)
 openai密码
+### WECHAT_KEY （必填）
+破解谷歌验证码需要的key，需要去网站`nopecha.com`购买
 ### WECHAT_CHAT_GPT_TOKEN (可选)
 chatgpt会话token, 大约一个月过期，获取步骤如下
 1. 登录 https://chat.openai.com
