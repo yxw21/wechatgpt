@@ -3,8 +3,6 @@ package helpers
 import (
 	"encoding/xml"
 	"github.com/eatmoreapple/openwechat"
-	"github.com/yxw21/chatgpt"
-	"wechatgpt/config"
 )
 
 type Msg struct {
@@ -25,11 +23,4 @@ func GetVerifyMsg(content string) string {
 		return ""
 	}
 	return msg.Content
-}
-
-func GetNewChat() *chatgpt.Chat {
-	if config.Instance.Username != "" && config.Instance.Password != "" && config.Instance.Key != "" {
-		return chatgpt.NewChat(config.Instance.Username, config.Instance.Password, config.Instance.Key)
-	}
-	return chatgpt.NewChatWithSessionToken(config.Instance.SessionToken)
 }

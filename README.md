@@ -1,6 +1,6 @@
 
 # 依赖
-- linux需要安装`xvfb`
+### Xvfb （只有linux环境需要安装)
 
 Ubuntu or Debian
 ```
@@ -12,12 +12,13 @@ CentOS
 yum update
 yum install xorg-x11-server-Xvfb
 ```
-- 登录需要谷歌验证码，引入了第三方破解，需要去网站`nopecha.com`购买key，价格很便宜
+### Key
+登录需要谷歌验证码，引入了第三方破解，需要去网站`nopecha.com`购买key，价格很便宜
 
 ```
 https://nopecha.com
 ```
-- 浏览器
+### Chrome
 
 Ubuntu or Debian
 ```
@@ -43,12 +44,11 @@ openai用户名
 openai密码
 ### WECHAT_KEY （必填）
 破解谷歌验证码需要的key，需要去网站`nopecha.com`购买
-### WECHAT_CHAT_GPT_TOKEN (可选)
+### WECHAT_CHAT_GPT_ACCESS_TOKEN (可选)
 chatgpt会话token, 大约一个月过期，获取步骤如下
+大概一天过期，不推荐
 1. 登录 https://chat.openai.com
-2. 获取`cookie` `__Secure-next-auth.session-token`
-<img width="945" alt="image" src="https://user-images.githubusercontent.com/16237562/206679314-7d412b03-98fc-422d-92bb-2d4a19f375b8.png">
-
+2. 访问 https://chat.openai.com/api/auth/session
 ### WECHAT_CHAT_GPT_POLICY (可选)
 好友添加策略
 
