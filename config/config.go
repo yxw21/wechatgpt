@@ -31,6 +31,6 @@ func init() {
 	if Instance.Username != "" && Instance.Password != "" && Instance.Key != "" {
 		Session = session.NewSessionWithCredential(Instance.Username, Instance.Password, Instance.Key).AutoRefresh()
 	} else {
-		Session = session.NewSessionWithAccessToken(Instance.AccessToken)
+		Session = session.NewSessionWithAccessToken(Instance.AccessToken).AutoRefresh()
 	}
 }
