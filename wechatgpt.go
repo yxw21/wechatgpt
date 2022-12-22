@@ -14,10 +14,10 @@ func main() {
 	dispatcher.OnFriendAdd(message.FriendAdd)
 	dispatcher.OnText(func(ctx *openwechat.MessageContext) {
 		if ctx.Message.IsSendByGroup() {
-			message.SendByGroup(ctx.Message)
+			go message.SendByGroup(ctx.Message)
 			return
 		}
-		message.Other(ctx.Message)
+		go message.Other(ctx.Message)
 	})
 	bot.MessageHandler = openwechat.DispatchMessage(dispatcher)
 	bot.UUIDCallback = func(uuid string) {
