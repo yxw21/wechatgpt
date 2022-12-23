@@ -2,8 +2,8 @@ package config
 
 import (
 	"github.com/yxw21/chatgpt"
-	session "github.com/yxw21/chatgpt/session"
 	"os"
+	"strconv"
 )
 
 type Config struct {
@@ -12,11 +12,12 @@ type Config struct {
 	Key             string
 	AccessToken     string
 	FriendAddPolicy string
+	MsgRetry        int
 }
 
 var (
 	Instance *Config
-	Session  *session.Session
+	Session  *chatgpt.Session
 	Chats    = make(map[string]*chatgpt.Chat)
 )
 
@@ -27,10 +28,15 @@ func init() {
 		Key:             os.Getenv("WECHAT_KEY"),
 		AccessToken:     os.Getenv("WECHAT_CHAT_GPT_ACCESS_TOKEN"),
 		FriendAddPolicy: os.Getenv("WECHAT_CHAT_GPT_POLICY"),
+		MsgRetry:        3,
 	}
 	if Instance.Username != "" && Instance.Password != "" && Instance.Key != "" {
-		Session = session.NewSessionWithCredential(Instance.Username, Instance.Password, Instance.Key).AutoRefresh()
+		Session = chatgpt.NewSessionWithCredential(Instance.Username, Instance.Password, Instance.Key).AutoRefresh()
 	} else {
-		Session = session.NewSessionWithAccessToken(Instance.AccessToken).AutoRefresh()
+		Session = chatgpt.NewSessionWithAccessToken(Instance.AccessToken).AutoRefresh()
+	}
+	msgRetry, err := strconv.Atoi(os.Getenv("WECHAT_MSG_RETRY"))
+	if err == nil && msgRetry > 0 {
+		Instance.MsgRetry = msgRetry
 	}
 }

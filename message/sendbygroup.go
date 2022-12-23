@@ -28,10 +28,14 @@ func SendByGroup(msg *openwechat.Message) {
 		config.Chats[senderID] = chatgpt.NewChat(config.Session)
 	}
 	word = strings.Replace(msg.Content, "@"+sender.Self.NickName, "", -1)
-	res, err := config.Chats[senderID].Send(word)
-	if err != nil {
-		_, _ = msg.ReplyText("@" + helpers.GetATName(groupSender) + "\n" + err.Error())
-	} else {
-		_, _ = msg.ReplyText("@" + helpers.GetATName(groupSender) + "\n" + res.Message.Content.Parts[0])
+	for i := 0; i < config.Instance.MsgRetry; i++ {
+		res, err := config.Chats[senderID].Send(word)
+		if err == nil {
+			_, _ = msg.ReplyText("@" + helpers.GetATName(groupSender) + "\n" + res.Message.Content.Parts[0])
+			break
+		}
+		if i == config.Instance.MsgRetry-1 {
+			_, _ = msg.ReplyText("@" + helpers.GetATName(groupSender) + "\n" + err.Error())
+		}
 	}
 }
