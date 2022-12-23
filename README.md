@@ -45,7 +45,7 @@ openai密码
 ### WECHAT_KEY （必填）
 破解谷歌验证码需要的key，需要去网站`nopecha.com`购买
 ### WECHAT_CHAT_GPT_ACCESS_TOKEN (可选)
-大概一天过期，不推荐
+大概7天过期
 1. 登录 https://chat.openai.com
 2. 访问 https://chat.openai.com/api/auth/session
 ### WECHAT_CHAT_GPT_POLICY (可选)
