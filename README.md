@@ -12,6 +12,11 @@ CentOS
 yum update
 yum install xorg-x11-server-Xvfb
 ```
+Alpine
+```
+apk update
+apk add xvfb
+```
 ### Key
 登录需要谷歌验证码，引入了第三方破解，需要去网站`nopecha.com`购买key，价格很便宜
 
