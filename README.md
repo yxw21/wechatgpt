@@ -82,3 +82,5 @@ WECHAT_CHAT_GPT_POLICY = agree,https://example.com
 ```
 ./wechatgpt
 ```
+# Docker
+https://hub.docker.com/r/yxw21/wechatgpt
