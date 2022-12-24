@@ -1,3 +1,30 @@
+# 支持的功能
+1. 私聊回复
+2. 群里@回复
+3. 好友请求处理
+# 使用
+### 直接下载二进制文件运行
+需要安装[依赖](https://github.com/yxw21/wechatgpt#%E4%BE%9D%E8%B5%96)
+并且提供一些[环境变量](https://github.com/yxw21/wechatgpt#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F)
+然后运行
+```
+./wechatgpt
+```
+
+### 使用docker
+需要提供一些[环境变量](https://github.com/yxw21/wechatgpt#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F)
+```
+docker run -dit -e WECHAT_CHAT_GPT_USERNAME=example@gmail.com -e WECHAT_CHAT_GPT_PASSWORD=password -e WECHAT_KEY=I-12312 yxw21/wechatgpt
+```
+https://hub.docker.com/r/yxw21/wechatgpt
+
+# 微信登录流程
+目前只支持扫描终端二维码登录。
+
+# CHATGPT登录流程
+如果提供了`WECHAT_CHAT_GPT_USERNAME`和`WECHAT_CHAT_GPT_PASSWORD`会自动登录获取`AccessToken`。
+
+`WECHAT_CHAT_GPT_USERNAME`、`WECHAT_CHAT_GPT_PASSWORD`和`WECHAT_CHAT_GPT_ACCESS_TOKEN`必须提供一项
 
 # 依赖
 ### Xvfb （只有linux环境需要安装)
@@ -49,8 +76,12 @@ openai用户名
 openai密码
 ### WECHAT_MSG_RETRY（可选）
 chatgpt请求失败重试的次数，次数越多回复消息就越慢(默认3)
-### WECHAT_KEY （必填）
+### WECHAT_KEY （可选）
 破解谷歌验证码需要的key，需要去网站`nopecha.com`购买
+
+如果提供了`WECHAT_CHAT_GPT_USERNAME`和`WECHAT_CHAT_GPT_PASSWORD`则必须提供`WECHAT_KEY`
+
+提供的是`WECHAT_CHAT_GPT_ACCESS_TOKEN`就可以忽略
 ### WECHAT_CHAT_GPT_ACCESS_TOKEN (可选)
 大概7天过期
 1. 登录 https://chat.openai.com
@@ -74,20 +105,3 @@ WECHAT_CHAT_GPT_POLICY = agree,123456
 ```
 WECHAT_CHAT_GPT_POLICY = agree,https://example.com
 ```
-# 微信登录流程
-目前只支持扫描终端二维码登录。
-
-# CHATGPT登录流程
-如果提供了chatgpt用户名和密码会使用账号密码登录获取token。
-
-账号密码和token必须提供一项
-# 支持的功能
-1. 私聊
-2. 群里@
-3. 好友请求
-# 使用(可直接下载二进制文件)
-```
-./wechatgpt
-```
-# Docker
-https://hub.docker.com/r/yxw21/wechatgpt
