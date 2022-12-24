@@ -12,13 +12,8 @@
 ```
 
 ### 使用docker
-需要提供一些[环境变量](https://github.com/yxw21/wechatgpt#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F)
-```
-docker run -dit -e WECHAT_CHAT_GPT_USERNAME=example@gmail.com -e WECHAT_CHAT_GPT_PASSWORD=password -e WECHAT_KEY=I-12312 yxw21/wechatgpt
-```
-然后查看容器日志`docker logs xxxx`，扫描二维码登录
 
-https://hub.docker.com/r/yxw21/wechatgpt
+参考 https://hub.docker.com/r/yxw21/wechatgpt
 
 # 微信登录流程
 目前只支持扫描终端二维码登录。
