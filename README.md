@@ -16,6 +16,8 @@
 ```
 docker run -dit -e WECHAT_CHAT_GPT_USERNAME=example@gmail.com -e WECHAT_CHAT_GPT_PASSWORD=password -e WECHAT_KEY=I-12312 yxw21/wechatgpt
 ```
+然后查看容器日志`docker logs xxxx`，扫描二维码登录
+
 https://hub.docker.com/r/yxw21/wechatgpt
 
 # 微信登录流程
