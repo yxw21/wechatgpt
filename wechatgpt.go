@@ -4,11 +4,19 @@ import (
 	"fmt"
 	"github.com/eatmoreapple/openwechat"
 	"github.com/skip2/go-qrcode"
+	"github.com/yxw21/chatgpt"
 	"log"
+	"wechatgpt/config"
 	"wechatgpt/message"
 )
 
 func main() {
+	browser, closeBrowser, err := chatgpt.NewBrowser("")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer closeBrowser()
+	config.Browser = browser
 	bot := openwechat.DefaultBot(openwechat.Desktop)
 	dispatcher := openwechat.NewMessageMatchDispatcher()
 	dispatcher.OnFriendAdd(message.FriendAdd)

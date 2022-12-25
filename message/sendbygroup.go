@@ -25,17 +25,13 @@ func SendByGroup(msg *openwechat.Message) {
 	}
 	senderID := sender.ID()
 	if _, ok := config.Chats[senderID]; !ok {
-		config.Chats[senderID] = chatgpt.NewChat(config.Session)
+		config.Chats[senderID] = chatgpt.NewChat(config.Browser, config.Session)
 	}
 	word = strings.Replace(msg.Content, "@"+sender.Self.NickName, "", -1)
-	for i := 0; i < config.Instance.MsgRetry; i++ {
-		res, err := config.Chats[senderID].Send(word)
-		if err == nil {
-			_, _ = msg.ReplyText("@" + helpers.GetATName(groupSender) + "\n" + res.Message.Content.Parts[0])
-			break
-		}
-		if i == config.Instance.MsgRetry-1 {
-			_, _ = msg.ReplyText("@" + helpers.GetATName(groupSender) + "\n" + err.Error())
-		}
+	res, err := config.Chats[senderID].Send(word)
+	if err != nil {
+		_, _ = msg.ReplyText("@" + helpers.GetATName(groupSender) + "\n" + err.Error())
+	} else {
+		_, _ = msg.ReplyText("@" + helpers.GetATName(groupSender) + "\n" + res.Message.Content.Parts[0])
 	}
 }
