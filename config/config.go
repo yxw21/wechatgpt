@@ -28,9 +28,4 @@ func init() {
 		AccessToken:     os.Getenv("WECHAT_CHAT_GPT_ACCESS_TOKEN"),
 		FriendAddPolicy: os.Getenv("WECHAT_CHAT_GPT_POLICY"),
 	}
-	if Instance.Username != "" && Instance.Password != "" && Instance.Key != "" {
-		Session = chatgpt.NewSessionWithCredential(Instance.Username, Instance.Password, Instance.Key).AutoRefresh()
-	} else {
-		Session = chatgpt.NewSessionWithAccessToken(Instance.AccessToken).AutoRefresh()
-	}
 }
