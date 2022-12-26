@@ -21,6 +21,7 @@ func main() {
 	defer closeBrowser()
 	config.Browser = browser
 	config.Session.Browser = browser
+	config.Session.AutoRefresh()
 	bot := openwechat.DefaultBot(openwechat.Desktop)
 	dispatcher := openwechat.NewMessageMatchDispatcher()
 	dispatcher.OnFriendAdd(message.FriendAdd)
