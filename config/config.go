@@ -11,6 +11,7 @@ type Config struct {
 	Key             string
 	AccessToken     string
 	FriendAddPolicy string
+	Proxy           string
 }
 
 var (
@@ -27,5 +28,6 @@ func init() {
 		Key:             os.Getenv("WECHAT_KEY"),
 		AccessToken:     os.Getenv("WECHAT_CHAT_GPT_ACCESS_TOKEN"),
 		FriendAddPolicy: os.Getenv("WECHAT_CHAT_GPT_POLICY"),
+		Proxy:           os.Getenv("WECHAT_PROXY"),
 	}
 }
