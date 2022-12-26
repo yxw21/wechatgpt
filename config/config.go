@@ -16,7 +16,7 @@ type Config struct {
 
 var (
 	Instance *Config
-	Session  *chatgpt.Session
+	Session  = &chatgpt.Session{}
 	Browser  *chatgpt.Browser
 	Chats    = make(map[string]*chatgpt.Chat)
 )
@@ -30,4 +30,7 @@ func init() {
 		FriendAddPolicy: os.Getenv("WECHAT_CHAT_GPT_POLICY"),
 		Proxy:           os.Getenv("WECHAT_PROXY"),
 	}
+	Session.Username = Instance.Username
+	Session.Password = Instance.Password
+	Session.AccessToken = Instance.AccessToken
 }

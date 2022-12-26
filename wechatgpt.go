@@ -20,11 +20,7 @@ func main() {
 	}
 	defer closeBrowser()
 	config.Browser = browser
-	if config.Instance.Username != "" && config.Instance.Password != "" {
-		config.Session = chatgpt.NewSessionWithCredential(browser, config.Instance.Username, config.Instance.Password).AutoRefresh()
-	} else {
-		config.Session = chatgpt.NewSessionWithAccessToken(browser, config.Instance.AccessToken).AutoRefresh()
-	}
+	config.Session.Browser = browser
 	bot := openwechat.DefaultBot(openwechat.Desktop)
 	dispatcher := openwechat.NewMessageMatchDispatcher()
 	dispatcher.OnFriendAdd(message.FriendAdd)
