@@ -24,13 +24,14 @@ func main() {
 	config.Session.AutoRefresh()
 	bot := openwechat.DefaultBot(openwechat.Desktop)
 	dispatcher := openwechat.NewMessageMatchDispatcher()
+	dispatcher.SetAsync(true)
 	dispatcher.OnFriendAdd(message.FriendAdd)
 	dispatcher.OnText(func(ctx *openwechat.MessageContext) {
 		if ctx.Message.IsSendByGroup() {
-			go message.SendByGroup(ctx.Message)
+			message.SendByGroup(ctx.Message)
 			return
 		}
-		go message.Other(ctx.Message)
+		message.Other(ctx.Message)
 	})
 	bot.MessageHandler = openwechat.DispatchMessage(dispatcher)
 	bot.UUIDCallback = func(uuid string) {
