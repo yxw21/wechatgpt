@@ -26,6 +26,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   dockerreleaser:
+    needs: goreleaser
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
