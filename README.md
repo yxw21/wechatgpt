@@ -42,7 +42,10 @@ apk update
 apk add xvfb
 ```
 ### Key
+
 登录需要谷歌验证码，引入了第三方破解，需要去网站`nopecha.com`购买key，价格很便宜
+
+如果提供AccessToken就不需要
 
 ```
 https://nopecha.com
